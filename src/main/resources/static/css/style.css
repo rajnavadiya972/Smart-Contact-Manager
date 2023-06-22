@@ -1,0 +1,163 @@
+body {
+	background: #e2e2e2 !important;
+}
+
+.bg-primary {
+	background: #009688 !important;
+}
+
+.banner {
+	width: 100%;
+	height: 92vh;
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url(../image/banner.jpg);
+	background-position: center; background-repeat : no-repeat;
+	background-size : cover;
+	color: white;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.my-card{
+	padding: 20px;
+	background: #ffffff;
+}
+
+.back-button{
+	margin-left: auto;
+	color: gray;
+	margin-top: 0px;
+}
+.back-button:hover{
+	color: blue;
+}
+
+/* sidebar */
+
+/*
+@media only screen and (max-width:970px){
+	.sidebar{
+		width:30% !important;
+		background: white;
+		position: fixed;
+		height: 100%;
+		padding-top: 45px;
+	}
+	.content{
+		margin-left: 32% !important;
+	}
+}
+*/ 
+@media only screen and (max-width:600px){
+	.sidebar{
+		width:80% !important;
+		background: white;
+		position: fixed;
+		height: 100%;
+		padding-top: 45px;
+	}
+	.content{
+		margin-left: 10px !important;
+		margin-right: 10px !important;
+	}
+	
+	.navebar-font{
+		font-size: 1rem;
+	}
+}
+
+.threeLine{
+	cursor: pointer;
+}
+.sidebar{
+	width:22%;
+	margin-top:-1rem;
+	background: white;
+	position: fixed;
+	height: 100%;
+	padding-top: 45px;
+	display:none;
+	z-index: 100000;
+}
+	
+.sidebar a{
+	display: block;
+	width: 100%;
+	padding: 10px 25px;
+	text-decoration: none;
+	color: gray;
+}
+
+.sidebar a:hover{
+	background: #e2e2e2;
+}
+
+.sidebar .divider{
+	height: 0.5px;
+	width: 100%;
+	background: #e2e2e2;
+	margin-top: 10px;
+}
+
+.active{
+	background: #009688 !important;
+	color:white !important;
+}
+
+.content{
+	margin-left:10px;
+	margin-right: 10px;
+	margin-top: 5rem;
+}
+
+.content>i{
+	font-size:30px;
+	cursor: pointer;
+}
+
+.sidebar .crossBtn{
+	position: absolute;
+	top: 0;
+	margin-top:5px;
+	right: 35px;
+	font-size:30px;
+	cursor: pointer;
+}
+
+.sidebar a i{
+	margin-right: 4px;
+}
+
+.profilePicture{
+	margin-right:3px;
+	width: 32px;
+	height: 32px;
+	object-fit:cover;
+	border-radius: 50%;
+	border: 1px solid black;
+}
+
+.userProfileOnly{
+	text-decoration: none;
+	color: black;
+}
+
+.userProfileOnly:hover{
+	text-decoration: none;
+	color: gray;
+}
+
+/*search result*/
+
+.search-container{
+	position: relative;
+}
+
+.search-result{
+	position: absolute;
+	background: #e2e2e2;
+	width:100%;
+	padding:10px;
+	border: 1px solid gray;
+	display: none;
+}

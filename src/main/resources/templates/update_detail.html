@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<!-- <title>Home Page</title> -->
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="my-card mt-3 mb-3">
+						<div th:if="${session.message}"
+							th:classappend="${session.message.type}"
+							class="alert text-center" role="alert">
+							<span th:text="${session.message.content}"></span>
+							<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+						</div>
+
+						<h1 class="text-center">Update User Detail</h1>
+						<form novalidate th:action="@{/do_update}" enctype="multipart/form-data" method="post">
+
+							<input type="hidden" th:value="${user.id}" name="id" />
+							<!-- Name field-->
+							<div class="form-group">
+								<label for="name_field">Your Name</label> <input name="name"
+									type="text" class="form-control" id="name_field"
+									th:classappend="${#fields.hasErrors('user.name')?'is-invalid':''}"
+									aria-describedby="nameHelp" placeholder="Enter Your Name"
+									th:value="${user.name}" required />
+
+								<div th:each="e:${#fields.errors('user.name')}" th:text="${e}"
+									class="invalid-feedback"></div>
+							</div>
+
+							<!-- Email field-->
+							<div class="form-group">
+								<label for="email_field">Your Email</label> <input name="email"
+									type="email" class="form-control" id="email_field"
+									th:classappend="${#fields.hasErrors('user.email')?'is-invalid':''}"
+									aria-describedby="emailHelp" placeholder="Enter Your email"
+									th:value="${user.email}" required />
+
+								<div th:each="e:${#fields.errors('user.email')}" th:text="${e}"
+									class="invalid-feedback"></div>
+							</div>
+
+							<!-- password field-->
+							<input name="password" th:value="${user.password}" type="hidden" />
+							<input type="hidden" name="role" th:value="${user.role}" />
+
+							<!-- about field  -->
+
+							<div class="form-group">
+
+								<textarea name="about" th:text="${user.about}" rows="6"
+									placeholder="Enter something yourself" class="form-control"></textarea>
+
+							</div>
+
+							<div class="container text-center">
+										<img class="profilePicture"
+											style="height: 200px; width: 200px;"
+											th:src="@{'/image/'+${user.imageUrl}}" alt="ProfilePhoto" />
+									</div>
+									<p class="text-secondary">Choose new profile picture !!</p>
+								<div class="custom-file">
+									<input type="file" name="profileImage" />
+								</div>
+
+
+
+
+
+							<div class="container text-center">
+								<button type="submit" class="btn bg-primary text-white">Update</button>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

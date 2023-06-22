@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<!-- <title>Home Page</title> -->
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="my-card mt-3 mb-3">
+						<div class="container text-center">
+							<img th:src="@{/image/register.png}" alt="Registration"
+								style="width: 100px;" />
+						</div>
+
+						<h1 class="text-center">Sign In</h1>
+						<form novalidate th:action="@{/dologin}" method="post">
+
+							<div class="container">
+								<div th:if="${session.message}"
+									th:classappend="${session.message.type}"
+									class="alert text-center mt-2" role="alert">
+									<span th:text="${session.message.content}"></span>
+									<th:block
+										th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+								</div>
+							</div>
+							<div th:if="${param.error}" class="alert alert-danger">
+								Invalid Username or Password</div>
+
+							<div th:if="${param.logout}" th:unless="${session.message}"
+								class="alert alert-success">You have been logged out</div>
+
+							<!-- Email field-->
+							<div class="form-group">
+								<label for="email_field">Your Email</label> <input
+									name="username" type="email" class="form-control"
+									id="email_field" aria-describedby="emailHelp"
+									placeholder="Enter Your email" required />
+							</div>
+
+							<!-- password field-->
+							<div class="form-group">
+								<label for="password_field">Your Password</label> <input
+									name="password" type="password" class="form-control"
+									id="password_field" aria-describedby="passwordHelp"
+									placeholder="Enter Your password" required />
+							</div>
+
+
+							<!-- terms and condition -->
+
+							<div class="d-flex justify-content-between">
+								<div class="form-group form-check">
+									<input type="checkbox" name="agreement"
+										class="form-check-input" id="agreement" /> <label
+										for="agreement">Accept Terms and Condition</label>
+								</div>
+								<a th:href="@{/forgot-password}" class="text-left ms-auto">Forgot
+									Password?</a> <a th:href="@{/signup}" class="text-left ms-auto">Register
+									here</a>
+							</div>
+
+
+							<div class="container text-center">
+								<button type="submit" class="btn bg-primary text-white">Submit</button>
+								<button type="reset" class="btn btn-warning text-white">Reset</button>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
